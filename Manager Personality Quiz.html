@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)http://127.0.0.1:5500/quiz/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manager Personality Quiz</title>
+  <style>
+    body {
+      font-family: Poppins, sans-serif;
+      background-color: #B3E8CC;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    .quiz-container {
+      max-width: 800px;
+      position:relative;
+      top: 100px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 24px;
+      border-radius: 8px;
+      box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    }
+    .quiz-title {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .question-card {
+      display: none;
+    }
+    .question-card.active {
+      display: block;
+    }
+    h2 {
+      font-size: 1.25rem;
+      margin-bottom: 16px;
+    }
+    .options {
+      list-style: none;
+      padding: 0;
+    }
+    .options li {
+      margin-bottom: 12px;
+      margin-left: 22px;
+    }
+    .options label {
+      background: #fff;
+      padding: 12px 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      display: block;
+      cursor: pointer;
+      transition: border 0.3s;
+    }
+    .options input[type="radio"] {
+      display: none;
+    }
+    .options input[type="radio"]:checked + label {
+      border: 2px solid #0073e6;
+    }
+    .button {
+      display: inline-block;
+      margin-top: 16px;
+      background-color: #6699FF;
+      color: #fff;
+      padding: 0 20px;
+      display: block;
+      margin: auto;
+      height: 45px;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .result {
+      display: none;
+      text-align: center;
+    }
+    .result h3 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+    }
+    .retake {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <div class="quiz-title">What's Your Leadership Style?</div>
+    <div id="quiz">
+      <!-- Questions -->
+      <!-- Edit the questions and answers below -->
+      <div class="question-card active" data-question="0">
+        <h2>1. How do you usually respond to team challenges?</h2>
+        <ul class="options">
+          <li><input type="radio" id="q0a" name="q0" value="coach"><label for="q0a">Support individuals and provide coaching</label></li>
+          <li><input type="radio" id="q0b" name="q0" value="visionary"><label for="q0b">Remind the team of the bigger picture</label></li>
+          <li><input type="radio" id="q0c" name="q0" value="delegator"><label for="q0c">Reassign tasks to those better suited</label></li>
+          <li><input type="radio" id="q0d" name="q0" value="solver"><label for="q0d">Step in and solve it myself</label></li>
+        </ul>
+        <button class="button" onclick="nextQuestion()">Next</button>
+      </div>
+
+      <div class="question-card" data-question="1">
+        <h2>2. What's your primary strength as a leader?</h2>
+        <ul class="options">
+          <li><input type="radio" id="q1a" name="q1" value="visionary"><label for="q1a">Inspiring others</label></li>
+          <li><input type="radio" id="q1b" name="q1" value="coach"><label for="q1b">Empathy and listening</label></li>
+          <li><input type="radio" id="q1c" name="q1" value="solver"><label for="q1c">Getting things done</label></li>
+          <li><input type="radio" id="q1d" name="q1" value="delegator"><label for="q1d">Efficient task management</label></li>
+        </ul>
+        <button class="button" onclick="nextQuestion()">Next</button>
+      </div>
+
+      <div class="question-card" data-question="2">
+        <h2>3. How do you prefer to communicate with your team?</h2>
+        <ul class="options">
+          <li><input type="radio" id="q2a" name="q2" value="coach"><label for="q2a">One-on-one conversations</label></li>
+          <li><input type="radio" id="q2b" name="q2" value="visionary"><label for="q2b">Teamwide meetings and vision-sharing</label></li>
+          <li><input type="radio" id="q2c" name="q2" value="solver"><label for="q2c">Brief updates and quick check-ins</label></li>
+          <li><input type="radio" id="q2d" name="q2" value="delegator"><label for="q2d">Project boards and task updates</label></li>
+        </ul>
+        <button class="button" onclick="nextQuestion()">Next</button>
+      </div>
+
+      <div class="question-card" data-question="3">
+        <h2>4. When conflict arises, you...</h2>
+        <ul class="options">
+          <li><input type="radio" id="q3a" name="q3" value="solver"><label for="q3a">Mediate quickly to resolve</label></li>
+          <li><input type="radio" id="q3b" name="q3" value="coach"><label for="q3b">Encourage reflection and discussion</label></li>
+          <li><input type="radio" id="q3c" name="q3" value="delegator"><label for="q3c">Let the team work it out</label></li>
+          <li><input type="radio" id="q3d" name="q3" value="visionary"><label for="q3d">Reframe it around the bigger goals</label></li>
+        </ul>
+        <button class="button" onclick="nextQuestion()">Next</button>
+      </div>
+
+      <div class="question-card" data-question="4">
+        <h2>5. How do you celebrate team success?</h2>
+        <ul class="options">
+          <li><input type="radio" id="q4a" name="q4" value="coach"><label for="q4a">Recognise personal growth</label></li>
+          <li><input type="radio" id="q4b" name="q4" value="visionary"><label for="q4b">Tie it to the mission</label></li>
+          <li><input type="radio" id="q4c" name="q4" value="delegator"><label for="q4c">Shout out contributors</label></li>
+          <li><input type="radio" id="q4d" name="q4" value="solver"><label for="q4d">Reward results</label></li>
+        </ul>
+        <button class="button" onclick="submitQuiz()">Submit</button>
+      </div>
+    </div>
+
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    let currentQuestion = 0;
+
+    function nextQuestion() {
+      const current = document.querySelector(`.question-card[data-question="${currentQuestion}"]`);
+      const selected = current.querySelector('input[type="radio"]:checked');
+      if (!selected) return alert("Please select an option before continuing.");
+      current.classList.remove("active");
+      currentQuestion++;
+      document.querySelector(`.question-card[data-question="${currentQuestion}"]`).classList.add("active");
+    }
+
+    function submitQuiz() {
+      const answers = Array.from(document.querySelectorAll("input[type='radio']:checked")).map(el => el.value);
+      if (answers.length < 5) return alert("Please answer all questions.");
+
+      const tally = {};
+      answers.forEach(a => tally[a] = (tally[a] || 0) + 1);
+
+      let topType = Object.keys(tally).reduce((a, b) => tally[a] >= tally[b] ? a : b);
+
+      const resultText = {
+        coach: {
+          title: "You're a Coach",
+          desc: "You lead by developing people. Your strength lies in empathy, support, and individual growth."
+        },
+        visionary: {
+          title: "You're a Visionary",
+          desc: "You inspire teams with purpose and big-picture thinking. You're driven by long-term impact."
+        },
+        delegator: {
+          title: "You're a Delegator",
+          desc: "You trust your team and excel in organising, assigning, and optimising workflows."
+        },
+        solver: {
+          title: "You're a Problem-Solver",
+          desc: "You tackle issues head-on and focus on results. You’re proactive, decisive, and dependable."
+        }
+      }[topType];
+
+      document.getElementById("quiz").style.display = "none";
+      const resultEl = document.getElementById("result");
+      resultEl.innerHTML = `
+        <h3>${resultText.title}</h3>
+        <p>${resultText.desc}</p>
+        <button class="button retake" onclick="location.reload()">Take Again</button>
+      `;
+      resultEl.style.display = "block";
+    }
+  </script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+
+</body></html>
