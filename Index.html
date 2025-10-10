@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<!-- saved from url=(0037)http://127.0.0.1:5500/quiz/index.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Manager Personality Quiz</title>
   <style>
     body {
@@ -34,7 +34,7 @@
       display: block;
     }
     h2 {
-      font-size: 1.25rem;
+      font-size: 1.75rem;
       margin-bottom: 16px;
     }
     .options {
@@ -53,12 +53,18 @@
       display: block;
       cursor: pointer;
       transition: border 0.3s;
+      font-size: 1.15rem;
     }
     .options input[type="radio"] {
       display: none;
     }
+    .options :hover label {
+      border-color: #676a6d;
+      background: #EEEBEA;
+    }
     .options input[type="radio"]:checked + label {
       border: 2px solid #0073e6;
+      background: #e6f0ff;
     }
     .button {
       display: inline-block;
@@ -72,7 +78,20 @@
       border: none;
       border-radius: 999px;
       cursor: pointer;
-      font-size: 1rem;
+      font-size: 1.15rem;
+    }
+    .button-secondary {
+      margin-left: auto;
+      background-color: #ccc;
+      color: #333;
+      padding: 0 20px;
+      display: block;
+      margin: auto;
+      height: 45px;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 1.15rem;
     }
     .result {
       display: none;
@@ -176,70 +195,38 @@
       const resultText = {
         coach: {
           title: "You're a Coach",
-          desc: "You lead by developing people. Your strength lies in empathy, support, and individual growth."
+          desc: "You lead by developing people. Your strength lies in empathy, support, and individual growth.",
+          link: "https://professional.dce.harvard.edu/blog/how-to-determine-what-my-leadership-style-is/#Can-You-Pick-Your-Leadership-Style-or-is-it-Predetermined:~:text=the%20next%20step.-,Coaching%20leadership%20style,-A%20coaching%20leadership"
         },
         visionary: {
           title: "You're a Visionary",
-          desc: "You inspire teams with purpose and big-picture thinking. You're driven by long-term impact."
+          desc: "You inspire teams with purpose and big-picture thinking. You're driven by long-term impact.",
+          link: "https://professional.dce.harvard.edu/blog/how-to-determine-what-my-leadership-style-is/#Leadership-Style-Types:~:text=Visionary%20leadership%20style"
         },
         delegator: {
           title: "You're a Delegator",
-          desc: "You trust your team and excel in organising, assigning, and optimising workflows."
+          desc: "You trust your team and excel in organising, assigning, and optimising workflows.",
+          link: "https://professional.dce.harvard.edu/blog/how-to-determine-what-my-leadership-style-is/#Leadership-Style-Types:~:text=and%20building%20trust.-,Bureaucratic%20leadership%20style,-A%20bureaucratic%20leadership"
         },
         solver: {
-          title: "You're a Problem-Solver",
-          desc: "You tackle issues head-on and focus on results. You’re proactive, decisive, and dependable."
+          title: "You're a Pacesetter",
+          desc: "You tackle issues head-on and focus on results. You’re proactive, decisive, and dependable.",
+          link: "https://professional.dce.harvard.edu/blog/how-to-determine-what-my-leadership-style-is/#Leadership-Style-Types:~:text=Pacesetter%20leadership%20style"
         }
       }[topType];
 
       document.getElementById("quiz").style.display = "none";
       const resultEl = document.getElementById("result");
-      resultEl.innerHTML = `
-        <h3>${resultText.title}</h3>
-        <p>${resultText.desc}</p>
-        <button class="button retake" onclick="location.reload()">Take Again</button>
-      `;
+resultEl.innerHTML = `
+    <h3>${resultText.title}</h3>
+    <p>${resultText.desc}</p>
+    ${resultText.link ? 
+        `<p><a href="${resultText.link.split(': ').pop()}" target="_blank" class="button.secondary">Learn More</a></p>` 
+        : ""}
+    <button class="button retake" onclick="location.reload()">Take Again</button>
+`;
       resultEl.style.display = "block";
     }
   </script>
-<!-- Code injected by live-server -->
-<script>
-	// <![CDATA[  <-- For SVG support
-	if ('WebSocket' in window) {
-		(function () {
-			function refreshCSS() {
-				var sheets = [].slice.call(document.getElementsByTagName("link"));
-				var head = document.getElementsByTagName("head")[0];
-				for (var i = 0; i < sheets.length; ++i) {
-					var elem = sheets[i];
-					var parent = elem.parentElement || head;
-					parent.removeChild(elem);
-					var rel = elem.rel;
-					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-					}
-					parent.appendChild(elem);
-				}
-			}
-			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-			var address = protocol + window.location.host + window.location.pathname + '/ws';
-			var socket = new WebSocket(address);
-			socket.onmessage = function (msg) {
-				if (msg.data == 'reload') window.location.reload();
-				else if (msg.data == 'refreshcss') refreshCSS();
-			};
-			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-				console.log('Live reload enabled.');
-				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-			}
-		})();
-	}
-	else {
-		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-	}
-	// ]]>
-</script>
-
-
-</body></html>
+</body>
+</html>
